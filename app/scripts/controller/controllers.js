@@ -1,30 +1,21 @@
-"use strict"
+"use strict";
 
-var myApp = angular.module("competition", []);
+var app = angular.module('competitionApp.retrieveCompetitions', []);
 
-myApp.controller("retrieveCompetitions", function ($scope, $http) {
+app.controller("retrieveCompetitionsControllers", function ($scope, $http) {
     $scope.name = "world";
 
-    // get available championships
-    $http({
-        method: "get",
-        url: "http://footballbet.com.ua/api/championships/"
-    }).then(function successCallback(response) {
-        console.log(response.data.result);
-        $scope.competitions = response.data.result;
 
-    }, function errorCallback(response){
+    var promises = getDataByUrl(["http://footballbet.com.ua/api/teams/",
+        "http://footballbet.com.ua/api/championships/"]);
 
-    });
+    //var promises = getResources(["http://footballbet.com.ua/api/teams/", "http://footballbet.com.ua/api/championships/"]);
+    promises.then(function (data) {
+            // data here is 2 arrays that you will need
+            console.log(data);
+        }
+    )
 
-    $http({
-        method: "get",
-        url: "http://footballbet.com.ua/api/teams/"
-    }).then(function successCallback(response) {
-        console.log(response.data.result);
-        $scope.teams = response.data.result;
 
-    }, function errorCallback(response){
 
-    });
 });

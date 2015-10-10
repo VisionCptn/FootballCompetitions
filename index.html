@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="competition">
+<html ng-app="competitionApp">
 <head>
 	<meta charset="utf-8">
 	<title>Football Competitions</title>
@@ -8,17 +8,20 @@
 	<link href="build/css/reset/reset.css" rel="stylesheet" type="text/css">
 
 	<script src="bower_components/angular/angular.min.js"></script>
+
+	<script src="app.js"></script>
 	<script src="app/scripts/controller/controllers.js"></script>
+	<script src="app/scripts/services/resouces-loader-service.js"></script>
 
 </head>
-<body ng-controller="retrieveCompetitions">
+<body ng-controller="retrieveCompetitionsControllers">
 
-	<div ng-repeat="competition in competitions" class="compCard">
-		<div class="header">{{competition.name}}</div>
-		<ul ng-repeat="team in teams" class="teamsList">
-			<li>{{team.name}}</li>
-		</ul>
-	</div>
+	<!--<div ng-repeat="competition in competitions" class="compCard">-->
+		<!--<div class="header">{{competition.name}}</div>-->
+		<!--<ul ng-repeat="team in teams" class="teamsList">-->
+			<!--<li>{{team.name}}</li>-->
+		<!--</ul>-->
+	<!--</div>-->
 
 </body>
 </html>
