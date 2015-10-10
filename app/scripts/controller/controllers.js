@@ -1,8 +1,8 @@
 "use strict";
 
-var app = angular.module("competitionApp");
+var app = angular.module('competitionApp.retrieveCompetitions', []);
 
-app.controller("retrieveCompetitions", function ($scope, $http, $q, resourceFactory) {
+app.controller("retrieveCompetitionsControllers", function ($scope, $http) {
     $scope.name = "world";
 
 

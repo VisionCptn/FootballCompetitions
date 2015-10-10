@@ -1,3 +1,5 @@
-/**
- * Created by vision on 09.10.15.
- */
+angular.module("competitionApp", [
+    //'resourceFactory',
+    'competitionApp.retrieveCompetitions',
+    'competitionApp.resource'
+]);

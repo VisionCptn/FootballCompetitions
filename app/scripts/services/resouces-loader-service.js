@@ -1,5 +1,5 @@
 "use strict";
-var app = angular.module('competitionApp');
+var app = angular.module('competitionApp.resource', []);
 
 
 app.factory('resourceFactory', ['$http', function($http) {
