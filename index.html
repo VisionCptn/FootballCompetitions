@@ -1,9 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="competition">
 <head>
+	<meta charset="utf-8">
 	<title>Football Competitions</title>
+
+	<link href="build/css/main.css" rel="stylesheet" type="text/css">
+	<link href="build/css/reset/reset.css" rel="stylesheet" type="text/css">
+
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="app/scripts/controller/controllers.js"></script>
+
 </head>
-<body>
+<body ng-controller="retrieveCompetitions">
+
+	<div ng-repeat="competition in competitions" class="compCard">
+		<div class="header">{{competition.name}}</div>
+		<ul ng-repeat="team in teams" class="teamsList">
+			<li>{{team.name}}</li>
+		</ul>
+	</div>
 
 </body>
 </html>
