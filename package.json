@@ -7,7 +7,8 @@
     "gulp": "*",
     "gulp-uglify": "*",
     "bower": "*",
-    "gulp-sass": "*"
+    "gulp-sass": "*",
+    "http-server": "*"
   },
   "description": "test project",
   "main": "index.js",
