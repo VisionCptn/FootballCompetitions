@@ -28,7 +28,7 @@
 			<a ui-sref="clubView">check</a>
 			<li ng-repeat="team in teams | filter:{id_championship:competition.id_championship} | filter:query"
 				ng-hide="team.name == ''">
-				<span team-dialog team="team">s</span>
+				<span team-dialog team="team"></span>
 			</li>
 		</ol>
 	</div>
