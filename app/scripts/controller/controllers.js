@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 var myApp = angular.module("competition", ["ui.router", "ngDialog"]);
 
@@ -28,7 +28,7 @@ myApp.controller("retrieveCompetitions", function ($scope, $http) {
 });
 
 
-app.controller('MainCtrl', function ($scope, $rootScope, ngDialog, $timeout) {
+myApp.controller('MainCtrl', function ($scope, $rootScope, ngDialog, $timeout) {
     $rootScope.jsonData = '{"foo": "bar"}';
     $rootScope.theme = 'ngdialog-theme-default';
     $scope.directivePreCloseCallback = function (value) {
@@ -68,3 +68,24 @@ myApp.config( function ($stateProvider, $urlRouterProvider){
         });
 
 });
+
+
+myApp.directive('teamDialog', ['ngDialog', function(ngDialog) {
+    return {
+        restrict: 'A',
+        scope: { team: '=' },
+        templateUrl: "app/scripts/controller/team.html",
+        link: function(scope, element){
+
+
+            element.on('click',function(){
+
+                ngDialog.open({
+                    templateUrl: "app/scripts/controller/team-dialog.html",
+                    scope: scope
+                })
+
+            });
+        }
+    };
+}]);
