@@ -4,11 +4,16 @@
   "private": "true",
   "dependencies": {},
   "devDependencies": {
-    "gulp": "*",
-    "gulp-uglify": "*",
     "bower": "*",
+    "gulp": "*",
     "gulp-sass": "*",
-    "http-server": "*"
+    "gulp-uglify": "*",
+    "http-server": "*",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-ng-scenario": "^0.1.0"
   },
   "description": "test project",
   "main": "index.js",
