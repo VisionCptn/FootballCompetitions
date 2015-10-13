@@ -1,50 +1,33 @@
 "use strict";
 
-var myApp = angular.module("competition", ["ui.router", "ngDialog","ngSanitize"]);
+var app = angular.module('competitionApp.retrieveCompetitions', [
+    "ui.router", "ngDialog", "ngSanitize", "angularSpinner"
+]);
 
-myApp.controller("retrieveCompetitions", function ($scope, $http) {
+app.controller("retrieveCompetitions", function ($scope, $http, resourceFactory, usSpinnerService) {
 
-    // get available championships
-    $http({
-            method: "get",
-            url: "http://footballbet.com.ua/api/championships/"
-        }).then(function successCallback(response) {
+    var resourceUrls = {
+                        teams: "http://footballbet.com.ua/api/teams/",
+                        champs:"http://footballbet.com.ua/api/championships/"
+                        };
 
-           $scope.competitions = response.data.result;
-        }, function errorCallback(response){
+    var resourcePromise = resourceFactory.getDataByUrl(resourceUrls);
 
-    });
-
-    $http({
-            method: "get",
-            url: "http://footballbet.com.ua/api/teams/"
-        }).then(function successCallback(response) {
-
-            $scope.teams = response.data.result;
-
-
-        }, function errorCallback(response){
-
-    });
+    usSpinnerService.spin('load-spinner');
+    resourcePromise.then(
+        function (resources) {
+            $scope.competitions = resources.champs.data.result;
+            $scope.teams = resources.teams.data.result;
+            usSpinnerService.stop('load-spinner');
+        },
+        function errorCallback(data, status, headers, config){
+            // suspend spinner as it van freeze page
+            // in case error of resourceFactory
+            usSpinnerService.stop('load-spinner');
+            console.error('Error fetching resource!', status);
+        });
 
 });
 
 
-myApp.directive('teamDialog', ['ngDialog', function(ngDialog) {
-    return {
-        restrict: 'A',
-        scope: { team: '=' },
-        templateUrl: "app/scripts/controller/team.html",
-        link: function(scope, element){
 
-            element.on('click',function(){
-
-                ngDialog.open({
-                    templateUrl: "app/scripts/controller/team-dialog.html",
-                    scope: scope
-                })
-
-            });
-        }
-    };
-}]);
