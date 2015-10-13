@@ -1,29 +1,55 @@
 .compCard
 	min-height:	150px
-	max-height: 250px
+	max-height: 330px
 	margin: 15px
 	background-color: white
 	border-radius: 5px
-	font-size: 1.6rem
-
-	width: 45%
+	font-size: 24px
+	width: 47%
 	float: left
-	
+	font-family: Roboto,'Helvetica Neue',sans-serif
+	box-shadow: 1px 1px 7px 0px rgba(71,71,71,0.51)
 
+	.wrapper
+		padding: 10px
+	
 	.header
-		width: 100%
-		font-size: 2.4rem
-		color: red
+		margin-bottom: 10px
+		font-size: 24px
+		color: #66cff2
+		height: 40px
+
 		.competitionImg
-		  	width: 40px
-		  	height: 40px
+			width: 40px
+			height: 40px
+			float: left
+
+		span
+			padding: 6px 0 0 10px
+			float: left
+
+	.search
+		// width: 80%
+		// margin: 0 10%
+		
+		input
+			height: 30px
+			width: 100%
+			padding: 0px
+			margin: 0px
+		    border: 2px inset
+
+
 	ol
-	  overflow-y: scroll
-	  list-style-type: decimal
-	  max-height: 200px
+		overflow-y: auto
+		list-style-type: decimal
+		max-height: 200px
+		padding: 0px
 
 	ol.teamsList li
-		margin-left: 25px
+		margin-left: 50px
+		font-size: 18px
+
 		img.teamImg
-		  	width: 20px
-		  	height: 20px
+			width: 20px
+			height: 20px

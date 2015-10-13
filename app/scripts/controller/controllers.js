@@ -1,6 +1,6 @@
 "use strict";
 
-var myApp = angular.module("competition", ["ui.router", "ngDialog"]);
+var myApp = angular.module("competition", ["ui.router", "ngDialog","ngSanitize"]);
 
 myApp.controller("retrieveCompetitions", function ($scope, $http) {
 
@@ -22,50 +22,10 @@ myApp.controller("retrieveCompetitions", function ($scope, $http) {
 
             $scope.teams = response.data.result;
 
+
         }, function errorCallback(response){
 
     });
-});
-
-
-myApp.controller('MainCtrl', function ($scope, $rootScope, ngDialog, $timeout) {
-    $rootScope.jsonData = '{"foo": "bar"}';
-    $rootScope.theme = 'ngdialog-theme-default';
-    $scope.directivePreCloseCallback = function (value) {
-        if (confirm('Close it? MainCtrl.Directive. (Value = ' + value + ')')) {
-            return true;
-        }
-        return false;
-    };
-    $scope.preCloseCallbackOnScope = function (value) {
-        if (confirm('Close it? MainCtrl.OnScope (Value = ' + value + ')')) {
-            return true;
-        }
-        return false;
-    };
-    $scope.open = function () {
-        var new_dialog = ngDialog.open({
-            id: 'fromAService',
-            template: '../../app/partial/clubView.html',
-            controller: 'InsideCtrl',
-            data: {foo: 'from a service'}
-        });
-        // example on checking whether created `new_dialog` is open
-        $timeout(function () {
-            console.log(ngDialog.isOpen(new_dialog.id));
-        }, 2000)
-    };
-});
-
-myApp.config( function ($stateProvider, $urlRouterProvider){
-
-
-
-    $stateProvider
-        .state("clubView", {
-            url: "/clubview",
-            templateUrl: "../../app/partial/clubView.html"
-        });
 
 });
 
@@ -76,7 +36,6 @@ myApp.directive('teamDialog', ['ngDialog', function(ngDialog) {
         scope: { team: '=' },
         templateUrl: "app/scripts/controller/team.html",
         link: function(scope, element){
-
 
             element.on('click',function(){
 
